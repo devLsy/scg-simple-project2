@@ -1,0 +1,13 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+spring:
+  devtools:
+    livereload.enabled: true
+    restart.enabled: true
