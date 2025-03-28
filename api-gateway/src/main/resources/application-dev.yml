@@ -9,13 +9,11 @@ spring:
     gateway:
       routes:
         - id: user
-          # docker conainer 주소
-          uri: http://api1:8081
+          uri: http://${aws.private.ip.api1}:8080
           predicates:
             - Path=/user/**
         - id: product
-          # docker conainer 주소
-          uri: http://api2:8082
+          uri: http://${aws.private.ip.api2}:8080
           predicates:
             - Path=/prod/**
        #   filters:
