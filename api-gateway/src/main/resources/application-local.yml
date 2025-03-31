@@ -17,6 +17,10 @@ spring:
               args:
                 pre: true
                 post: true
+            - name: L2Filter
+              args:
+                pre: true
+                post: true
         - id: product
           uri: http://localhost:8082
           predicates:
