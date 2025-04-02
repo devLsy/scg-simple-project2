@@ -13,14 +13,32 @@ spring:
           predicates:
             - Path=/user/**
           filters:
-            - AddRequestHeader=X-Request-ID, 12345
-            - AddResponseHeader=X-Response-ID, 67890
-            - RewritePath=/user/(?<segment>.*), /newuser/${segment}
-            - RedirectTo=302, http://localhost:8081/tmp
+            - name: CircuitBreaker
+              args:
+                name: userCircuitBreaker
+                fallbackUri: forward:/fallback/user
+#            - AddRequestHeader=X-Request-ID, 12345
+#            - AddResponseHeader=X-Response-ID, 67890
+#            - RewritePath=/user/(?<segment>.*), /newuser/${segment}
+#            - RedirectTo=302, http://localhost:8081/tmp
 
         - id: product
           uri: http://localhost:8082
           predicates:
             - Path=/prod/**
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    endpoint:
+      health:
+        show-details: always
+
+    health:
+      circuitbreakers:
+        enabled: true
+
 server:
   port: 80
