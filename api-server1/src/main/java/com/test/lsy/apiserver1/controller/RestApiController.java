@@ -4,10 +4,12 @@ package com.test.lsy.apiserver1.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,7 +22,10 @@ public class RestApiController {
     }
 
     @GetMapping("/user")
-    public List<String> ms1() {
+    public List<String> ms1(@RequestHeader Map<String, String> headers) {
+
+        headers.forEach((key, value) -> log.info("key : {}, value : {}", key, value));
+
         log.info("user server~~~~~~~~~~~~~~~~");
         ArrayList<String> list = new ArrayList<>();
         list.add("user server");
