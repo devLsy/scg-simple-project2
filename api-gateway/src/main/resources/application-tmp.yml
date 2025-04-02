@@ -17,6 +17,7 @@ spring:
             - AddResponseHeader=X-Response-ID, 67890
             - RewritePath=/user/(?<segment>.*), /newuser/${segment}
             - RedirectTo=302, http://localhost:8081/tmp
+
         - id: product
           uri: http://localhost:8082
           predicates:
