@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -22,7 +23,8 @@ public class RestApiController {
     }
 
     @GetMapping("/user")
-    public List<String> ms1(@RequestHeader Map<String, String> headers) {
+    public List<String> ms1(@RequestHeader Map<String, String> headers,
+                            @RequestParam(value = "id", required = false) Long id) {
 
         headers.forEach((key, value) -> log.info("key : {}, value : {}", key, value));
 
@@ -32,5 +34,10 @@ public class RestApiController {
         list.add("홍길동");
         list.add("임꺽정");
         return list;
+    }
+
+    @GetMapping("/tmp")
+    public String tmp() {
+        return "api server 1 tmp path~~~";
     }
 }
