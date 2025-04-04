@@ -3,6 +3,7 @@ package com.test.lsy.apiserver1.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,5 +40,17 @@ public class RestApiController {
     @GetMapping("/tmp")
     public String tmp() {
         return "api server 1 tmp path~~~";
+    }
+
+    @GetMapping("/user/test-error")
+    public ResponseEntity<String> testError() {
+//        return ResponseEntity.status(500).body("강제 오류");
+        throw new RuntimeException("강제 오류");
+    }
+
+    @GetMapping("/user/test-delay")
+    public String testDelay() throws InterruptedException{
+        Thread.sleep(6000);
+        return "느린 응답";
     }
 }
