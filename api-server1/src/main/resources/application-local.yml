@@ -17,8 +17,8 @@ spring:
     driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
     url: jdbc:log4jdbc:postgresql://${db.host}:5432/test
     hikari:
-      username: user
-      password: 1234
+      username: ENC(feWLzMuSpD/07wK3ESEy1Q==)
+      password: ENC(LS2oMIuHhso2WofRo+6gWQ==)
       connectionTimeout: 10000
       maximum-pool-size: 15
       max-lifetime: 600000
@@ -41,3 +41,11 @@ resilience4j:
         waitDurationInOpenState: 10s
         permittedNumberOfCallsInHalfOpenState: 2
         minimumNumberOfCalls: 5
+
+jasypt:
+  encryptor:
+    # JasyptConfig에 정의한 빈 이름
+    bean: jasyptStringEncryptor
+    property:
+      prefix: ENC(
+      suffix: )
