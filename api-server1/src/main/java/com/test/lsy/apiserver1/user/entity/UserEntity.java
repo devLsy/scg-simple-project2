@@ -18,11 +18,12 @@ public class UserEntity {
 
     @Column(name = "user_name")
     private String userName;
-    private String password;
+    @Column(name = "user_password")
+    private String userPassword;
 
     @Builder
-    public UserEntity(String userName, String password) {
+    public UserEntity(String userName, String userPassword) {
         this.userName = userName;
-        this.password = password;
+        this.userPassword = userPassword;
     }
 }
