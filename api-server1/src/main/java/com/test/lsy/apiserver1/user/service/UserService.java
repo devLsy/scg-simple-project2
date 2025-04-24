@@ -22,7 +22,7 @@ public class UserService {
     }
 
     /**
-     * 아이디로 조회(캐싱값이 있으면 캐시 데이터 반환)
+     * 아이디로 조회(캐시된 값이 있으면 캐시값 반환)
      * @param id
      * @return
      */
